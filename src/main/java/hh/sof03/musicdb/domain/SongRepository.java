@@ -1,5 +1,7 @@
 package hh.sof03.musicdb.domain;
 
-public class SongRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface SongRepository extends CrudRepository<Song, Long> {
     
 }
