@@ -1,9 +1,13 @@
 package hh.sof03.musicdb.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Song {
@@ -15,6 +19,9 @@ public class Song {
     private long id;
     private String name;
     private String length;
+    @ManyToOne
+    @JsonIgnoreProperties("songs")
+    @JoinColumn(name = "album_id")
     private Album album;
 
     // Constructors
@@ -22,12 +29,10 @@ public class Song {
     public Song() {
         this.name = null;
         this.length = null;
-        this.length = null;
         this.album = null;
     }
 
-    public Song(long id, String name, String length, Album album) {
-        this.id = id;
+    public Song(String name, String length, Album album) {
         this.name = name;
         this.length = length;
         this.album = album;
