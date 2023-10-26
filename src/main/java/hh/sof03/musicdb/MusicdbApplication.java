@@ -31,8 +31,10 @@ public class MusicdbApplication {
             log.info("Saving artists");
 
             Artist art1 = new Artist("Vesa-Matti Loiri");
+            Artist art2 = new Artist("Basshunter");
 
             artistRepo.save(art1);
+            artistRepo.save(art2);
 
             log.info("Fetch artists");
 
@@ -43,8 +45,10 @@ public class MusicdbApplication {
             log.info("Saving albums");
 
             Album alb1 = new Album("Hyvää puuta", 2009, art1);
+            Album alb2 = new Album("LOL", 2006, art2);
 
             albumRepo.save(alb1);
+            albumRepo.save(alb2);
 
             log.info("Fetch albums");
 
@@ -55,8 +59,10 @@ public class MusicdbApplication {
             log.info("Saving songs");
 
             Song son1 = new Song("Hyvää puuta", "4:56", alb1);
+            Song son2 = new Song("Boten Anna", "3:28", alb2);
 
             songRepo.save(son1);
+            songRepo.save(son2);
 
             log.info("Fetch songs");
 
