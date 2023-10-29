@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Song list</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+</head>
+
+<body>
+    <h1>Song list</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Artist</th>
+            <th>Album</th>
+            <th>Length</th>
+        </tr>
+        <tr th:each="song : ${songs}">
+            <td th:text="${song.name}">Name</td>
+            <td th:text="${song.album.artist != null ? song.album.artist.name : ''}">Artist</td>
+            <td th:text="${song.album != null ? song.album.name : ''}">Album</td>
+            <td th:text="${song.length}">Length</td>
+        </tr>
+    </table>
+</body>
+
+</html>
