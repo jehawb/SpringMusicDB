@@ -36,6 +36,19 @@ public class MusicdbApplication {
 
             Artist loiri = artistRepo.save(new Artist("Vesa-Matti Loiri"));
 
+            Album leinoalb = albumRepo.save(new Album("Eino Leino", 1978, loiri));
+
+            songRepo.save(new Song("Höyhensaaret", "4:24", leinoalb));
+            songRepo.save(new Song("Elegia", "3:56", leinoalb));
+            songRepo.save(new Song("Tulkaa kotiin", "3:30", leinoalb));
+            songRepo.save(new Song("Ja vuodet ne käy", "2:04", leinoalb));
+            songRepo.save(new Song("Laulajan laulu", "2:42", leinoalb));
+            songRepo.save(new Song("Nocturne", "3:31", leinoalb));
+            songRepo.save(new Song("Väinämöisen laulu", "3:12", leinoalb));
+            songRepo.save(new Song("Hautalaulu", "2:26", leinoalb));
+            songRepo.save(new Song("Kun muistelen", "3:18", leinoalb));
+            songRepo.save(new Song("Lapin kesä", "4:24", leinoalb));
+
             Album puutaalb = albumRepo.save(new Album("Hyvää puuta", 2009, loiri));
 
             songRepo.save(new Song("Miksi mä maailmalle laulaisin", "4:00", puutaalb));
