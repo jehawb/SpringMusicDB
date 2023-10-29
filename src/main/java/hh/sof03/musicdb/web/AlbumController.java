@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import hh.sof03.musicdb.domain.Album;
 import hh.sof03.musicdb.domain.AlbumRepository;
 import hh.sof03.musicdb.domain.ArtistRepository;
-import hh.sof03.musicdb.domain.Song;
 
 @CrossOrigin
 @Controller

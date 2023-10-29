@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import hh.sof03.musicdb.domain.Album;
 import hh.sof03.musicdb.domain.Artist;
 import hh.sof03.musicdb.domain.ArtistRepository;
 
