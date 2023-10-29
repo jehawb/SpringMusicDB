@@ -32,6 +32,10 @@ public class MusicdbApplication {
 
             log.info("Adding testing data");
 
+            // Placeholder artist and album
+
+            albumRepo.save(new Album(" --- ", 0, artistRepo.save(new Artist(" --- "))));
+
             // Loiri
 
             Artist loiri = artistRepo.save(new Artist("Vesa-Matti Loiri"));

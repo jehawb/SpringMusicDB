@@ -14,12 +14,14 @@
             <th>Artist</th>
             <th>Album</th>
             <th>Length</th>
+            <th></th> <!-- Whitespace for edit button -->
         </tr>
         <tr th:each="song : ${songs}">
             <td th:text="${song.name}">Name</td>
             <td th:text="${song.album.artist != null ? song.album.artist.name : ''}">Artist</td>
             <td th:text="${song.album != null ? song.album.name : ''}">Album</td>
             <td th:text="${song.length}">Length</td>
+            <td><a th:href="@{/editsong/{id}(id=${song.id})}">Edit</a></td>
         </tr>
     </table>
 </body>
