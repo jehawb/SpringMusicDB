@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Edit artist</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+</head>
+
+<body>
+
+    <h2>Edit artist</h2>
+
+    <form th:object="${artist}" th:action="@{/saveartist}" action="#" method="post">
+
+        <input type="hidden" id="id" th:field="*{id}" value="*{id}" />
+
+        <label for="name">Name</label>
+        <input type="text" id="name" th:field="*{name}" value="*{name}" />
+
+        <input type="submit" value="Edit" />
+    </form>
+
+</body>
+
+</html>

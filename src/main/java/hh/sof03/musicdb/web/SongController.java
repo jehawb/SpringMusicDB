@@ -39,8 +39,8 @@ public class SongController {
         return "editsong"; // editsong.html
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(Song song) {
+    @RequestMapping(value = "/savesong", method = RequestMethod.POST)
+    public String savesong(Song song) {
         songRepo.save(song);
         return "redirect:/songlist"; // songlist.html
     }
