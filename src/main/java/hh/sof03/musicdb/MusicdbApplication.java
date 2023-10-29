@@ -28,47 +28,49 @@ public class MusicdbApplication {
             SongRepository songRepo) {
         return (args) -> {
 
-            log.info("Saving artists");
+            // Test data
 
-            Artist art1 = new Artist("Vesa-Matti Loiri");
-            Artist art2 = new Artist("Basshunter");
+            log.info("Adding testing data");
 
-            artistRepo.save(art1);
-            artistRepo.save(art2);
+            // Loiri
 
-            log.info("Fetch artists");
+            Artist loiri = artistRepo.save(new Artist("Vesa-Matti Loiri"));
 
-            for (Artist artist : artistRepo.findAll()) {
-                log.info(artist.toString());
-            }
+            Album puutaalb = albumRepo.save(new Album("Hyvää puuta", 2009, loiri));
 
-            log.info("Saving albums");
+            songRepo.save(new Song("Miksi mä maailmalle laulaisin", "4:00", puutaalb));
+            songRepo.save(new Song("Aapakarhu", "2:58", puutaalb));
+            songRepo.save(new Song("Kaiken nähnyt", "4:08", puutaalb));
+            songRepo.save(new Song("Missä kotini on", "4:10", puutaalb));
+            songRepo.save(new Song("Hyvää puuta", "4:56", puutaalb));
+            songRepo.save(new Song("Vilukukka", "3:44", puutaalb));
+            songRepo.save(new Song("Taivun mutten murru", "4:27", puutaalb));
+            songRepo.save(new Song("Ystäväni", "4:20", puutaalb));
+            songRepo.save(new Song("Ei tullutkaan äänettömyys", "4:18", puutaalb));
+            songRepo.save(new Song("Hyvää elämää", "2:59", puutaalb));
+            songRepo.save(new Song("Sadan miehen leukaluut", "3:33", puutaalb));
+            songRepo.save(new Song("Uskon", "3:11", puutaalb));
 
-            Album alb1 = new Album("Hyvää puuta", 2009, art1);
-            Album alb2 = new Album("LOL", 2006, art2);
+            // Basshunter
 
-            albumRepo.save(alb1);
-            albumRepo.save(alb2);
+            Artist basshunter = artistRepo.save(new Artist("Basshunter"));
 
-            log.info("Fetch albums");
+            Album lolalb = albumRepo.save(new Album("LOL <(^^,)>", 2006, basshunter));
 
-            for (Album album : albumRepo.findAll()) {
-                log.info(album.toString());
-            }
-
-            log.info("Saving songs");
-
-            Song son1 = new Song("Hyvää puuta", "4:56", alb1);
-            Song son2 = new Song("Boten Anna", "3:28", alb2);
-
-            songRepo.save(son1);
-            songRepo.save(son2);
-
-            log.info("Fetch songs");
-
-            for (Song song : songRepo.findAll()) {
-                log.info(song.toString());
-            }
+            songRepo.save(new Song("Vi sitter i Ventrilo och spelar DotA [Radio advert]", "3:21", lolalb));
+            songRepo.save(new Song("Boten Anna [Radio Edit]", "3:28", lolalb));
+            songRepo.save(new Song("Strand Tylösand", "3:17", lolalb));
+            songRepo.save(new Song("Sverige", "2:58", lolalb));
+            songRepo.save(new Song("Hallå där", "2:38", lolalb));
+            songRepo.save(new Song("Mellan oss två", "3:57", lolalb));
+            songRepo.save(new Song("Var är jag", "4:00", lolalb));
+            songRepo.save(new Song("Utan stjärnorna", "3:50", lolalb));
+            songRepo.save(new Song("Festfolk [2006 Remix]", "4:00", lolalb));
+            songRepo.save(new Song("Vifta med händerna [Basshunter Remix]", "3:10", lolalb));
+            songRepo.save(new Song("Professional Party People", "3:09", lolalb));
+            songRepo.save(new Song("I'm Your Basscreator", "5:24", lolalb));
+            songRepo.save(new Song("Boten Anna [Instrumental]", "3:20", lolalb));
+            songRepo.save(new Song("Vi sitter i Ventrilo och spelar DotA [Extended Version]", "7:45", lolalb));
 
         };
     }
