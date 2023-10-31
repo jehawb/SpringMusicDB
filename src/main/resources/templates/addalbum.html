@@ -2,23 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Edit album</title>
+    <title>Add an album</title>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 </head>
 
 <body>
 
-    <h1>Edit album</h1>
+    <h1>Add an album</h1>
 
     <form th:object="${album}" th:action="@{/savealbum}" action="#" method="post">
 
-        <input type="hidden" id="id" th:field="*{id}" value="*{id}" />
-
         <label for="name">Name</label>
-        <input type="text" id="name" th:field="*{name}" value="*{name}" />
+        <input type="text" id="name" th:field="*{name}" />
 
         <label for="releaseYear">Release year</label>
-        <input type="text" id="releaseYear" th:field="*{releaseYear}" value="*{releaseYear}" />
+        <input type="text" id="releaseYear" th:field="*{releaseYear}" />
 
         <label for="artistlist">Artist</label>
         <select id="artistlist" th:field="*{artist}" class="form-control">
@@ -26,7 +24,8 @@
             </option>
         </select>
 
-        <input type="submit" value="Edit" />
+        <input type="submit" value="Add" />
+        
     </form>
 
 </body>

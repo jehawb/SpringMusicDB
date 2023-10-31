@@ -44,4 +44,11 @@ public class AlbumController {
         albumRepo.save(album);
         return "redirect:/listalbums"; // listalbums.html
     }
+
+    @RequestMapping(value = "/addalbum", method = RequestMethod.GET)
+    public String addAlbum(Model model) {
+        model.addAttribute("album", new Album());
+        model.addAttribute("artists", artistRepo.findAll());
+        return "addalbum"; // addalbum.html
+    }
 }

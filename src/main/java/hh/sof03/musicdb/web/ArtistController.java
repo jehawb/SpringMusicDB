@@ -39,4 +39,10 @@ public class ArtistController {
         artistRepo.save(artist);
         return "redirect:/listartists"; // listartists.html
     }
+
+    @RequestMapping(value = "/addartist", method = RequestMethod.GET)
+    public String addArtist(Model model) {
+        model.addAttribute("artist", new Artist());
+        return "addartist"; // addartist.html
+    }
 }
