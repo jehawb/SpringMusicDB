@@ -26,23 +26,23 @@ public class SongController {
 
     // Endpoint handling
 
-    @RequestMapping(value = "/songlist", method = RequestMethod.GET)
-    public String songlist(Model model) {
+    @RequestMapping(value = "/listsongs", method = RequestMethod.GET)
+    public String listSongs(Model model) {
         model.addAttribute("songs", songRepo.findAll());
-        return "songlist"; // songlist.html
+        return "listsongs"; // listsongs.html
     }
 
     @RequestMapping(value = "/editsong/{id}", method = RequestMethod.GET)
-    public String editsong(@PathVariable("id") Long id, Model model) {
+    public String editSong(@PathVariable("id") Long id, Model model) {
         model.addAttribute("song", songRepo.findById(id));
         model.addAttribute("albums", albumRepo.findAll());
         return "editsong"; // editsong.html
     }
 
     @RequestMapping(value = "/savesong", method = RequestMethod.POST)
-    public String savesong(Song song) {
+    public String saveSong(Song song) {
         songRepo.save(song);
-        return "redirect:/songlist"; // songlist.html
+        return "redirect:/listsongs"; // listsongs.html
     }
 
     @RequestMapping(value = "/addsong", method = RequestMethod.GET)
