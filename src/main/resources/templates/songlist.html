@@ -8,6 +8,9 @@
 
 <body>
     <h1>Song list</h1>
+
+    <a class="" href="/addsong">Add song</a>
+    
     <table>
         <tr>
             <th>Name</th>
@@ -24,6 +27,7 @@
             <td><a th:href="@{/editsong/{id}(id=${song.id})}">Edit</a></td>
         </tr>
     </table>
+
 </body>
 
 </html>

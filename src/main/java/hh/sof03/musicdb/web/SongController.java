@@ -45,4 +45,11 @@ public class SongController {
         return "redirect:/songlist"; // songlist.html
     }
 
+    @RequestMapping(value = "/addsong", method = RequestMethod.GET)
+    public String addSong(Model model) {
+        model.addAttribute("song", new Song());
+        model.addAttribute("albums", albumRepo.findAll());
+        return "addsong"; // addsong.html
+    }
+
 }
