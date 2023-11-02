@@ -45,4 +45,10 @@ public class ArtistController {
         model.addAttribute("artist", new Artist());
         return "addartist"; // addartist.html
     }
+
+    @RequestMapping(value = "/deleteartist/{id}", method = RequestMethod.GET)
+    public String deleteArtist(@PathVariable("id") Long id, Model model) {
+        artistRepo.deleteById(id);
+        return "redirect:/listartists"; // listartists.html
+    }
 }

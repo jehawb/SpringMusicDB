@@ -19,6 +19,7 @@
         <tr th:each="artist : ${artist}">
             <td th:text="${artist.name}">Name</td>
             <td><a th:href="@{/editartist/{id}(id=${artist.id})}">Edit</a></td>
+            <td><a th:href="@{/deleteartist/{id}(id=${artist.id})}">DELETE</a></td>
         </tr>
     </table>
 </body>
