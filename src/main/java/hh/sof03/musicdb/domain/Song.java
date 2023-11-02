@@ -23,6 +23,7 @@ public class Song {
     @JsonIgnoreProperties("songs")
     @JoinColumn(name = "album_id")
     private Album album;
+    private String youtubeQuery;
 
     // Constructors
 
@@ -30,12 +31,14 @@ public class Song {
         this.name = null;
         this.length = null;
         this.album = null;
+        this.youtubeQuery = null;
     }
 
     public Song(String name, String length, Album album) {
         this.name = name;
         this.length = length;
         this.album = album;
+        this.youtubeQuery = name.replace(' ', '+').concat("+" + album.getArtist().getName().replace(' ', '+'));
     }
 
     // Getters and Setters
@@ -54,6 +57,7 @@ public class Song {
 
     public void setName(String name) {
         this.name = name;
+        this.youtubeQuery = name.replace(' ', '+');
     }
 
     public String getLength() {
@@ -70,6 +74,11 @@ public class Song {
 
     public void setAlbum(Album album) {
         this.album = album;
+        this.youtubeQuery += "+" + album.getArtist().getName().replace(' ', '+'); // Not working, maybe not used with crud?
+    }
+
+    public String getYoutubeQuery() {
+        return youtubeQuery;
     }
 
     // ToString
