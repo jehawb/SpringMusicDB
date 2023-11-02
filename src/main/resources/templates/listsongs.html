@@ -19,6 +19,7 @@
             <th>Album</th>
             <th>Length</th>
             <th></th> <!-- Whitespace for edit button -->
+            <th></th> <!-- Whitespace for delete button -->
         </tr>
         <tr th:each="song : ${songs}">
             <td th:text="${song.name}">Name</td>
@@ -26,6 +27,7 @@
             <td th:text="${song.album != null ? song.album.name : ''}">Album</td>
             <td th:text="${song.length}">Length</td>
             <td><a th:href="@{/editsong/{id}(id=${song.id})}">Edit</a></td>
+            <td><a th:href="@{/deletesong/{id}(id=${song.id})}">DELETE</a></td>
         </tr>
     </table>
 
