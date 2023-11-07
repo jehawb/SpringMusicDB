@@ -52,4 +52,10 @@ public class SongController {
         return "addsong"; // addsong.html
     }
 
+    @RequestMapping(value = "/deletesong/{id}", method = RequestMethod.GET)
+    public String deleteSong(@PathVariable("id") Long id, Model model) {
+        songRepo.deleteById(id);
+        return "redirect:/listsongs"; // listsongs.html
+    }
+
 }

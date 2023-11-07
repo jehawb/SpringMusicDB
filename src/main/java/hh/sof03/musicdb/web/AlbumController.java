@@ -51,4 +51,10 @@ public class AlbumController {
         model.addAttribute("artists", artistRepo.findAll());
         return "addalbum"; // addalbum.html
     }
+
+    @RequestMapping(value = "/deletealbum/{id}", method = RequestMethod.GET)
+    public String deleteAlbum(@PathVariable("id") Long id, Model model) {
+        albumRepo.deleteById(id);
+        return "redirect:/listalbums"; // listalbums.html
+    }
 }

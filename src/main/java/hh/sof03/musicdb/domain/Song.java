@@ -72,6 +72,12 @@ public class Song {
         this.album = album;
     }
 
+    public String getYoutubeQuery() {
+        String youtubeQueryStr = this.name;
+        youtubeQueryStr = youtubeQueryStr.replace(' ', '+').concat("+" + this.album.getArtist().getName().replace(' ', '+'));
+        return youtubeQueryStr;
+    }
+
     // ToString
 
     @Override
