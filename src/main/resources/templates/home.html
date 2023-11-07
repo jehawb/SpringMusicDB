@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <title>Music database</title>
@@ -9,6 +9,15 @@
 <body>
 
     <h1>Welcome to a music database</h1>
+    <p>Logged in as <span sec:authentication="name"></span></p>
+
+    <a href="/listartists">Artist list</a>
+    <a href="/listalbums">Album list</a>
+    <a href="/listsongs">Song list</a>
+
+    <form th:action="@{/logout}" method="post">
+        <input class="btn btn-warning" type="submit" value="Sign Out" />
+    </form>
 
 </body>
 
