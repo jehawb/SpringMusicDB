@@ -2,6 +2,8 @@ package hh.sof03.musicdb.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +20,7 @@ public class Artist {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "artist")
     private List<Album> albums;
 
