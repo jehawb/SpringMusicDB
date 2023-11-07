@@ -23,6 +23,7 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    
     private String name;
 
     private int releaseYear;
