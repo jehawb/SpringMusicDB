@@ -17,8 +17,11 @@ public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String name;
+
     private String length;
+    
     @ManyToOne
     @JsonIgnoreProperties("songs")
     @JoinColumn(name = "album_id")

@@ -19,7 +19,9 @@ public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String name;
+    
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "artist")
     private List<Album> albums;
