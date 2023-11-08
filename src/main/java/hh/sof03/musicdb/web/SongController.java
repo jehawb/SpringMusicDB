@@ -58,4 +58,10 @@ public class SongController {
         return "redirect:/listsongs"; // listsongs.html
     }
 
+    @RequestMapping(value = "/listsongs/{id}", method = RequestMethod.GET)
+    public String listSongsOnAlbum(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("songs", songRepo.findByAlbumId(id));
+        return "listsongs"; // listsongs.html
+    }
+
 }
