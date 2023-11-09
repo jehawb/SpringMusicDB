@@ -58,7 +58,7 @@ public class SongController {
     @RequestMapping(value = "/updatesong", method = RequestMethod.POST)
     public String updateSong(@Valid @ModelAttribute("song") Song song, BindingResult bindingResult, Model model) {
 
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {        // !!! CRASHES THE PROGRAM FOR REASONS !!!
             model.addAttribute("song", songRepo.findById(song.getId()));
             model.addAttribute("albums", albumRepo.findAll());
             return "editsong/" + song.getId(); // addsong.html
