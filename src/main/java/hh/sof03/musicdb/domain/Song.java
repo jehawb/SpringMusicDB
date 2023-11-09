@@ -19,7 +19,7 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotEmpty
+    @NotEmpty(message = "Please add a name")
     private String name;
 
     private String length;
