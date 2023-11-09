@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import hh.sof03.musicdb.domain.AlbumRepository;
 import hh.sof03.musicdb.domain.ArtistRepository;
@@ -13,6 +14,8 @@ import hh.sof03.musicdb.domain.SongRepository;
 
 @Controller
 public class SearchController {
+
+    // Repositories
 
     @Autowired
     ArtistRepository artistRepo;
@@ -23,12 +26,15 @@ public class SearchController {
     @Autowired
     SongRepository songRepo;
 
-    @RequestMapping(value = "/search/{name}", method = RequestMethod.GET)
-    public String search(@PathVariable("name") String name, Model model) {
+    // Endpoint handling
 
-        model.addAttribute("artists", artistRepo.findByNameLikeIgnoreCase("%" + name + "%"));
-        model.addAttribute("albums", albumRepo.findByNameLikeIgnoreCase("%" + name + "%"));
-        model.addAttribute("songs", songRepo.findByNameLikeIgnoreCase("%" + name + "%"));
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String search(@RequestParam("keyword") String keyword, Model model) {
+
+        // %name% form needed for "like" search operations
+        model.addAttribute("artists", artistRepo.findByNameLikeIgnoreCase("%" + keyword + "%"));
+        model.addAttribute("albums", albumRepo.findByNameLikeIgnoreCase("%" + keyword + "%"));
+        model.addAttribute("songs", songRepo.findByNameLikeIgnoreCase("%" + keyword + "%"));
 
         return "search"; // search.html
     }
