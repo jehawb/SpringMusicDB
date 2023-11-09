@@ -10,7 +10,7 @@
 
     <h1>Edit song</h1>
 
-    <form th:object="${song}" th:action="@{/savesong}" action="#" method="post">
+    <form th:object="${song}" th:action="@{/updatesong}" action="#" method="post">
 
         <input type="hidden" id="id" th:field="*{id}" value="*{id}" />
 

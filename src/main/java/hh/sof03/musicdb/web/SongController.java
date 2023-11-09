@@ -3,7 +3,9 @@ package hh.sof03.musicdb.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import hh.sof03.musicdb.domain.AlbumRepository;
 import hh.sof03.musicdb.domain.Song;
 import hh.sof03.musicdb.domain.SongRepository;
+import jakarta.validation.Valid;
 
 @CrossOrigin
 @Controller
@@ -40,9 +43,29 @@ public class SongController {
     }
 
     @RequestMapping(value = "/savesong", method = RequestMethod.POST)
-    public String saveSong(Song song) {
-        songRepo.save(song);
-        return "redirect:/listsongs"; // listsongs.html
+    public String saveSong(@Valid @ModelAttribute("song") Song song, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            // model.addAttribute("song", new Song()); // not required for adding a song apparently
+            model.addAttribute("albums", albumRepo.findAll());
+            return "addsong"; // addsong.html
+        } else {
+            songRepo.save(song);
+            return "redirect:/listsongs"; // listsongs.html
+        }
+    }
+
+    @RequestMapping(value = "/updatesong", method = RequestMethod.POST)
+    public String updateSong(@Valid @ModelAttribute("song") Song song, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("song", songRepo.findById(song.getId()));
+            model.addAttribute("albums", albumRepo.findAll());
+            return "editsong/" + song.getId(); // addsong.html
+        } else {
+            songRepo.save(song);
+            return "redirect:/listsongs"; // listsongs.html
+        }
     }
 
     @RequestMapping(value = "/addsong", method = RequestMethod.GET)
