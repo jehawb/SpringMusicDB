@@ -42,11 +42,12 @@ public class SongController {
         return "editsong"; // editsong.html
     }
 
+    // TODO: Combine adding new song and editing existing song, using one html file and save method
+
     @RequestMapping(value = "/savesong", method = RequestMethod.POST)
     public String saveSong(@Valid @ModelAttribute("song") Song song, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-            // model.addAttribute("song", new Song()); // not required for adding a song apparently
             model.addAttribute("albums", albumRepo.findAll());
             return "addsong"; // addsong.html
         } else {
@@ -58,8 +59,7 @@ public class SongController {
     @RequestMapping(value = "/updatesong", method = RequestMethod.POST)
     public String updateSong(@Valid @ModelAttribute("song") Song song, BindingResult bindingResult, Model model) {
 
-        if (bindingResult.hasErrors()) {    // Does not trigger error message ?
-            model.addAttribute("song", songRepo.findById(song.getId()));    // required here to provide the song attributes
+        if (bindingResult.hasErrors()) {
             model.addAttribute("albums", albumRepo.findAll());
             return "editsong"; // editsong.html
         } else {

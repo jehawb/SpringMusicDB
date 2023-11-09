@@ -16,6 +16,7 @@
 
         <label for="name">Name</label>
         <input type="text" id="name" th:field="*{name}" value="*{name}" />
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</p>
 
         <label for="length">Length</label>
         <input type="text" id="length" th:field="*{length}" value="*{length}" />
