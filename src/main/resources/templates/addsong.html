@@ -18,6 +18,8 @@
 
         <label for="albumlist">Album</label>
         <select id="albumlist" th:field="*{album}" class="form-control">
+            <!-- Empty option for album -->
+            <!-- <option value=""></option>  -->
             <option th:each="album: ${albums}" th:value="${album.id}" th:text="${album.name}">
             </option>
         </select>
