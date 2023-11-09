@@ -21,7 +21,7 @@ public class Song {
     private String name;
 
     private String length;
-    
+
     @ManyToOne
     @JsonIgnoreProperties("songs")
     @JoinColumn(name = "album_id")
@@ -77,7 +77,12 @@ public class Song {
 
     public String getYoutubeQuery() {
         String youtubeQueryStr = this.name;
-        youtubeQueryStr = youtubeQueryStr.replace(' ', '+').concat("+" + this.album.getArtist().getName().replace(' ', '+'));
+        if (album != null) {
+            youtubeQueryStr = youtubeQueryStr.replace(' ', '+')
+                    .concat("+" + this.album.getArtist().getName().replace(' ', '+'));
+        } else {
+            youtubeQueryStr = youtubeQueryStr.replace(' ', '+');
+        }
         return youtubeQueryStr;
     }
 
