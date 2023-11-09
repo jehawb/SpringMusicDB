@@ -16,8 +16,10 @@
     <table>
         <tr>
             <th>Name</th>
+            <th></th> <!-- Whitespace for edit button -->
+            <th></th> <!-- Whitespace for delete button -->
         </tr>
-        <tr th:each="artist : ${artist}">
+        <tr th:each="artist : ${artists}">
             <td th:text="${artist.name}">Name</td>
             <td><a th:href="@{/editartist/{id}(id=${artist.id})}">Edit</a></td>
             <td><a th:href="@{/deleteartist/{id}(id=${artist.id})}">DELETE</a></td>

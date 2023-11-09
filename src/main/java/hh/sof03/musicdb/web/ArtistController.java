@@ -24,7 +24,7 @@ public class ArtistController {
 
     @RequestMapping(value = "/listartists", method = RequestMethod.GET)
     public String listArtists(Model model) {
-        model.addAttribute("artist", artistRepo.findAll());
+        model.addAttribute("artists", artistRepo.findAll());
         return "listartists"; // listartists.html
     }
 

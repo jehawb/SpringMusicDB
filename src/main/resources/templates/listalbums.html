@@ -19,6 +19,7 @@
             <th>Artist</th>
             <th>Year</th>
             <th></th> <!-- Whitespace for edit button -->
+            <th></th> <!-- Whitespace for delete button -->
         </tr>
         <tr th:each="album : ${albums}">
             <td><a th:text="${album.name}" th:href="@{/listsongs/{id}(id=${album.id})}"></a></td>

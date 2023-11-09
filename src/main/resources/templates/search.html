@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Search results</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+</head>
+
+<body>
+
+    <h1>Search results</h1>
+
+    <a href="/">Back to homepage</a>
+
+    <h2>Artists</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th></th> <!-- Whitespace for edit button -->
+            <th></th> <!-- Whitespace for delete button -->
+        </tr>
+        <tr th:each="artist : ${artists}">
+            <td th:text="${artist.name}">Name</td>
+            <td><a th:href="@{/editartist/{id}(id=${artist.id})}">Edit</a></td>
+            <td><a th:href="@{/deleteartist/{id}(id=${artist.id})}">DELETE</a></td>
+        </tr>
+    </table>
+
+    <h2>Albums</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Artist</th>
+            <th>Year</th>
+            <th></th> <!-- Whitespace for edit button -->
+            <th></th> <!-- Whitespace for delete button -->
+        </tr>
+        <tr th:each="album : ${albums}">
+            <td><a th:text="${album.name}" th:href="@{/listsongs/{id}(id=${album.id})}"></a></td>
+            <td th:text="${album.artist != null ? album.artist.name : ''}">Artist</td>
+            <td th:text="${album.releaseYear}">Year</td>
+            <td><a th:href="@{/editalbum/{id}(id=${album.id})}">Edit</a></td>
+            <td><a th:href="@{/deletealbum/{id}(id=${album.id})}">DELETE</a></td>
+        </tr>
+    </table>
+
+    <h2>Songs</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Artist</th>
+            <th>Album</th>
+            <th>Length</th>
+            <th></th> <!-- Whitespace for edit button -->
+            <th></th> <!-- Whitespace for delete button -->
+        </tr>
+        <tr th:each="song : ${songs}">
+            <td><a th:text="${song.name}"
+                    th:href="@{https://www.youtube.com/results?search_query={YT}(YT=${song.youtubeQuery})}"
+                    target="_blank">Name</a></td>
+            <td th:text="${song.album.artist != null ? song.album.artist.name : ''}">Artist</td>
+            <td th:text="${song.album != null ? song.album.name : ''}">Album</td>
+            <td th:text="${song.length}">Length</td>
+            <td><a th:href="@{/editsong/{id}(id=${song.id})}">Edit</a></td>
+            <td><a th:href="@{/deletesong/{id}(id=${song.id})}">DELETE</a></td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
