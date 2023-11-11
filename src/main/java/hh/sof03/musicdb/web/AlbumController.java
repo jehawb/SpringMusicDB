@@ -15,7 +15,7 @@ import hh.sof03.musicdb.domain.ArtistRepository;
 @CrossOrigin
 @Controller
 public class AlbumController {
-    
+
     // Repositories
 
     @Autowired
@@ -57,4 +57,11 @@ public class AlbumController {
         albumRepo.deleteById(id);
         return "redirect:/listalbums"; // listalbums.html
     }
+
+    @RequestMapping(value = "/listalbums/{id}", method = RequestMethod.GET)
+    public String listAlbumsOfArtist(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("albums", albumRepo.findByArtistId(id));
+        return "listalbums"; // listalbums.html
+    }
+
 }

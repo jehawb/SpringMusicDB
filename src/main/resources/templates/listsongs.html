@@ -26,7 +26,8 @@
             <td><a th:text="${song.name}"
                     th:href="@{https://www.youtube.com/results?search_query={YT}(YT=${song.youtubeQuery})}"
                     target="_blank">Name</a></td>
-            <td th:text="${song.album.artist != null ? song.album.artist.name : ''}">Artist</td>
+            <td><a th:text="${song.album.artist != null ? song.album.artist.name : ''}"
+                    th:href="@{/listalbums/{id}(id=${song.album.artist.id})}"></a></td>
             <td th:text="${song.album != null ? song.album.name : ''}">Album</td>
             <td th:text="${song.length}">Length</td>
             <td><a th:href="@{/editsong/{id}(id=${song.id})}">Edit</a></td>

@@ -20,7 +20,7 @@
             <th></th> <!-- Whitespace for delete button -->
         </tr>
         <tr th:each="artist : ${artists}">
-            <td th:text="${artist.name}">Name</td>
+            <td><a th:text="${artist.name}" th:href="@{/listalbums/{id}(id=${artist.id})}"></a></td>
             <td><a th:href="@{/editartist/{id}(id=${artist.id})}">Edit</a></td>
             <td><a th:href="@{/deleteartist/{id}(id=${artist.id})}">DELETE</a></td>
         </tr>
