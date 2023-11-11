@@ -21,8 +21,8 @@
         </tr>
         <tr th:each="artist : ${artists}">
             <td><a th:text="${artist.name}" th:href="@{/listalbums/{id}(id=${artist.id})}"></a></td>
-            <td><a th:href="@{/editartist/{id}(id=${artist.id})}">Edit</a></td>
-            <td><a th:href="@{/deleteartist/{id}(id=${artist.id})}">DELETE</a></td>
+            <td><a th:href="@{/editartist/{id}(id=${artist.id})}"><button>Edit</button></a></td>
+            <td><a th:href="@{/deleteartist/{id}(id=${artist.id})}"><button>DELETE</button></a></td>
         </tr>
     </table>
 </body>

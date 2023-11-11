@@ -30,8 +30,8 @@
                     th:href="@{/listalbums/{id}(id=${song.album.artist.id})}"></a></td>
             <td th:text="${song.album != null ? song.album.name : ''}">Album</td>
             <td th:text="${song.length}">Length</td>
-            <td><a th:href="@{/editsong/{id}(id=${song.id})}">Edit</a></td>
-            <td><a th:href="@{/deletesong/{id}(id=${song.id})}">DELETE</a></td>
+            <td><a th:href="@{/editsong/{id}(id=${song.id})}"><button>Edit</button></a></td>
+            <td><a th:href="@{/deletesong/{id}(id=${song.id})}"><button>DELETE</button></a></td>
         </tr>
     </table>
 
