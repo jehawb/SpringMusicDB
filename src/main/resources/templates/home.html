@@ -10,15 +10,19 @@
 
     <h1>Welcome to a music database</h1>
 
-    <a href="/login">Sign in</a>
+    <a href="/login"><button>Sign in</button></a>
     <span>Logged in as <span sec:authentication="name"></span></span>
     <form th:action="@{/logout}" method="post">
         <input class="btn btn-warning" type="submit" value="Sign Out" />
     </form>
 
-    <p><a href="/listartists">Artist list</a></p>
-    <p><a href="/listalbums">Album list</a></p>
-    <p><a href="/listsongs">Song list</a></p>
+    <table>
+        <tr>
+            <td><a href="/listartists"><button>Artists</button></a></td>
+            <td><a href="/listalbums"><button>Albums</button></a></td>
+            <td><a href="/listsongs"><button>Songs</button></a></td>
+        </tr>
+    </table>
 
     <form th:action="@{/search}" method="get">
         <input type="text" name="keyword" placeholder="Search by name">
