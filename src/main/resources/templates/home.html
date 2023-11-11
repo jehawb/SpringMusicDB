@@ -10,6 +10,7 @@
 
     <h1>Welcome to a music database</h1>
 
+    <a href="/login">Sign in</a>
     <span>Logged in as <span sec:authentication="name"></span></span>
     <form th:action="@{/logout}" method="post">
         <input class="btn btn-warning" type="submit" value="Sign Out" />

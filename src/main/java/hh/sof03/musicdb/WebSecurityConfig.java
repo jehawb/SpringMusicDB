@@ -30,6 +30,11 @@ public class WebSecurityConfig {
                         .requestMatchers(antMatcher("/css/**")).permitAll() // Allows the usage of css without login
                         .requestMatchers(toH2Console()).permitAll() // Allow the usage of H2-console
                         .requestMatchers(antMatcher("/rest/**")).permitAll() // Allows the rest api to be accessed without authorization, NEEDS CORS HANDLING ASWELL IF USED FOR REACT FRONT END
+                        .requestMatchers(antMatcher("/")).permitAll()
+                        .requestMatchers(antMatcher("/listartists/**")).permitAll()
+                        .requestMatchers(antMatcher("/listalbums/**")).permitAll()
+                        .requestMatchers(antMatcher("/listsongs/**")).permitAll()
+                        .requestMatchers(antMatcher("/search")).permitAll()
                         .anyRequest().authenticated() // All other endpoints require login
                 )
                 .csrf(csrf -> csrf
