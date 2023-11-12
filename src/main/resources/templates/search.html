@@ -22,8 +22,8 @@
         </tr>
         <tr th:each="artist : ${artists}">
             <td><a th:text="${artist.name}" th:href="@{/listalbums/{id}(id=${artist.id})}">Name</a></td>
-            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editartist/{id}(id=${artist.id})}">Edit</a></td>
-            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deleteartist/{id}(id=${artist.id})}">DELETE</a>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editartist/{id}(id=${artist.id})}"><button>Edit</button></a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deleteartist/{id}(id=${artist.id})}"><button>DELETE</button></a>
             </td>
         </tr>
     </table>
@@ -44,8 +44,8 @@
             <td><a th:text="${album.name}" th:href="@{/listsongs/{id}(id=${album.id})}">Name</a></td>
             <td><a th:text="${album.artist != null ? album.artist.name : ''}" th:href="@{/listalbums/{id}(id=${album.artist.id})}">Artist</a></td>
             <td th:text="${album.releaseYear}">Year</td>
-            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editalbum/{id}(id=${album.id})}">Edit</a></td>
-            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deletealbum/{id}(id=${album.id})}">DELETE</a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editalbum/{id}(id=${album.id})}"><button>Edit</button></a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deletealbum/{id}(id=${album.id})}"><button>DELETE</button></a></td>
         </tr>
     </table>
 
@@ -70,8 +70,8 @@
                 th:href="@{/listalbums/{id}(id=${song.album.artist.id})}">Artist</a></td>
             <td th:text="${song.album != null ? song.album.name : ''}">Album</td>
             <td th:text="${song.length}">Length</td>
-            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editsong/{id}(id=${song.id})}">Edit</a></td>
-            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deletesong/{id}(id=${song.id})}">DELETE</a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editsong/{id}(id=${song.id})}"><button>Edit</button></a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deletesong/{id}(id=${song.id})}"><button>DELETE</button></a></td>
         </tr>
     </table>
 
