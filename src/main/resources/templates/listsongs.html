@@ -27,7 +27,7 @@
                     th:href="@{https://www.youtube.com/results?search_query={YT}(YT=${song.youtubeQuery})}"
                     target="_blank">Name</a></td>
             <td><a th:text="${song.album.artist != null ? song.album.artist.name : ''}"
-                    th:href="@{/listalbums/{id}(id=${song.album.artist.id})}"></a></td>
+                    th:href="@{/listalbums/{id}(id=${song.album.artist.id})}">Artist</a></td>
             <td th:text="${song.album != null ? song.album.name : ''}">Album</td>
             <td th:text="${song.length}">Length</td>
             <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editsong/{id}(id=${song.id})}"><button>Edit</button></a></td>
