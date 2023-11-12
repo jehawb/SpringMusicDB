@@ -13,7 +13,8 @@
     <a href="/"><button>Homepage</button></a>
 
     <h2>Artists</h2>
-    <table>
+
+    <table th:if="${not #lists.isEmpty(artists)}">
         <tr>
             <th>Name</th>
             <th></th> <!-- Whitespace for edit button -->
@@ -22,12 +23,16 @@
         <tr th:each="artist : ${artists}">
             <td th:text="${artist.name}">Name</td>
             <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editartist/{id}(id=${artist.id})}">Edit</a></td>
-            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deleteartist/{id}(id=${artist.id})}">DELETE</a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deleteartist/{id}(id=${artist.id})}">DELETE</a>
+            </td>
         </tr>
     </table>
 
+    <p th:if="${#lists.isEmpty(artists)}">No artists found</p>
+    
     <h2>Albums</h2>
-    <table>
+
+    <table th:if="${not #lists.isEmpty(albums)}">
         <tr>
             <th>Name</th>
             <th>Artist</th>
@@ -44,8 +49,11 @@
         </tr>
     </table>
 
+    <p th:if="${#lists.isEmpty(albums)}">No albums found</p>
+
     <h2>Songs</h2>
-    <table>
+
+    <table th:if="${not #lists.isEmpty(songs)}">
         <tr>
             <th>Name</th>
             <th>Artist</th>
@@ -65,6 +73,8 @@
             <td><a th:href="@{/deletesong/{id}(id=${song.id})}">DELETE</a></td>
         </tr>
     </table>
+    
+    <p th:if="${#lists.isEmpty(songs)}">No songs found</p>
 
 </body>
 
