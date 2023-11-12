@@ -10,8 +10,8 @@
 
     <h1>Album list</h1>
 
-    <p><a href="/"><button>Homepage</button></a></p>
-    <p><a class="" href="/addalbum"><button>Add album</button></a></p>
+    <a href="/"><button>Homepage</button></a>
+    <a sec:authorize="hasAuthority('ADMIN')" class="" href="/addalbum"><button>Add album</button></a>
 
     <table>
         <tr>
@@ -25,8 +25,8 @@
             <td><a th:text="${album.name}" th:href="@{/listsongs/{id}(id=${album.id})}"></a></td>
             <td th:text="${album.artist != null ? album.artist.name : ''}">Artist</td>
             <td th:text="${album.releaseYear}">Year</td>
-            <td><a th:href="@{/editalbum/{id}(id=${album.id})}"><button>Edit</button></a></td>
-            <td><a th:href="@{/deletealbum/{id}(id=${album.id})}"><button>DELETE</button></a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editalbum/{id}(id=${album.id})}"><button>Edit</button></a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deletealbum/{id}(id=${album.id})}"><button>DELETE</button></a></td>
         </tr>
     </table>
 </body>

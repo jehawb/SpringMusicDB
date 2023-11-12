@@ -10,8 +10,8 @@
 
     <h1>Song list</h1>
 
-    <p><a href="/"><button>Homepage</button></a></p>
-    <p><a class="" href="/addsong"><button>Add song</button></a></p>
+    <a href="/"><button>Homepage</button></a>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/addsong"><button>Add song</button></a>
 
     <table>
         <tr>
@@ -30,8 +30,8 @@
                     th:href="@{/listalbums/{id}(id=${song.album.artist.id})}"></a></td>
             <td th:text="${song.album != null ? song.album.name : ''}">Album</td>
             <td th:text="${song.length}">Length</td>
-            <td><a th:href="@{/editsong/{id}(id=${song.id})}"><button>Edit</button></a></td>
-            <td><a th:href="@{/deletesong/{id}(id=${song.id})}"><button>DELETE</button></a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editsong/{id}(id=${song.id})}"><button>Edit</button></a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deletesong/{id}(id=${song.id})}"><button>DELETE</button></a></td>
         </tr>
     </table>
 
