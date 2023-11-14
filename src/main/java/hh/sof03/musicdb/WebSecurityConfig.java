@@ -28,7 +28,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(antMatcher("/css/**")).permitAll() // Allows the usage of css without login
-                        .requestMatchers(toH2Console()).permitAll() // Allow the usage of H2-console
+                        // .requestMatchers(toH2Console()).permitAll() // Allow the usage of H2-console
                         .requestMatchers(antMatcher("/rest/**")).permitAll() // Allows the rest api to be accessed without authorization, NEEDS CORS HANDLING ASWELL IF USED FOR REACT FRONT END
                         .requestMatchers(antMatcher("/")).permitAll()
                         .requestMatchers(antMatcher("/listartists/**")).permitAll()
@@ -37,11 +37,11 @@ public class WebSecurityConfig {
                         .requestMatchers(antMatcher("/search")).permitAll()
                         .anyRequest().authenticated() // All other endpoints require login
                 )
-                .csrf(csrf -> csrf
-                        .ignoringRequestMatchers(toH2Console())) // H2 console modifications to security
-                .headers(headers -> headers
-                        .frameOptions(frameoptions -> frameoptions
-                                .disable())) // H2 console modifications to security
+                // .csrf(csrf -> csrf
+                //         .ignoringRequestMatchers(toH2Console())) // H2 console modifications to security
+                // .headers(headers -> headers
+                //         .frameOptions(frameoptions -> frameoptions
+                //                 .disable())) // H2 console modifications to security
                 .formLogin(formlogin -> formlogin
                         .defaultSuccessUrl("/", true)
                         .permitAll())
