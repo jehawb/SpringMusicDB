@@ -2,6 +2,8 @@ package hh.sof03.musicdb;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -32,5 +34,15 @@ public class ArtistRepositoryTests {
         Artist deletedArtist = artistRepository.findById(artist.getId()).orElse(null);
 
         assertThat(deletedArtist).isNull();
+    }
+
+    @Test
+    public void testFindArtistByName() {
+        Artist artist = new Artist("test artist");
+        artistRepository.save(artist);
+
+        List<Artist> foundArtists = artistRepository.findByNameLikeIgnoreCase(artist.getName());
+        assertThat(foundArtists.get(0).getName()).isEqualTo(artist.getName());
+
     }
 }
