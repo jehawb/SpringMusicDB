@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Album {
@@ -23,7 +24,7 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    
+    @NotEmpty(message = "Please add a name")
     private String name;
 
     private int releaseYear;

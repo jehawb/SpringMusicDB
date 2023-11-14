@@ -3,7 +3,9 @@ package hh.sof03.musicdb.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import hh.sof03.musicdb.domain.Album;
 import hh.sof03.musicdb.domain.AlbumRepository;
 import hh.sof03.musicdb.domain.ArtistRepository;
+import hh.sof03.musicdb.domain.Song;
+import jakarta.validation.Valid;
 
 @CrossOrigin
 @Controller
@@ -40,9 +44,27 @@ public class AlbumController {
     }
 
     @RequestMapping(value = "/savealbum", method = RequestMethod.POST)
-    public String saveAlbum(Album album) {
-        albumRepo.save(album);
-        return "redirect:/listalbums"; // listalbums.html
+    public String saveSong(@Valid @ModelAttribute("album") Album album, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("artists", artistRepo.findAll());
+            return "addalbum"; // addalbum.html
+        } else {
+            albumRepo.save(album);
+            return "redirect:/listalbums"; // listalbums.html
+        }
+    }
+
+    @RequestMapping(value = "/updatealbum", method = RequestMethod.POST)
+    public String updateSong(@Valid @ModelAttribute("album") Album album, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("artists", artistRepo.findAll());
+            return "editalbum"; // editalbum.html
+        } else {
+            albumRepo.save(album);
+            return "redirect:/listalbums"; // listalbums.html
+        }
     }
 
     @RequestMapping(value = "/addalbum", method = RequestMethod.GET)

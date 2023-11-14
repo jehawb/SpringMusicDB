@@ -10,12 +10,13 @@
 
     <h1>Edit album</h1>
 
-    <form th:object="${album}" th:action="@{/savealbum}" action="#" method="post">
+    <form th:object="${album}" th:action="@{/updatealbum}" action="#" method="post">
 
         <input type="hidden" id="id" th:field="*{id}" value="*{id}" />
 
         <label for="name">Name</label>
         <input type="text" id="name" th:field="*{name}" value="*{name}" />
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</p>
 
         <label for="releaseYear">Release year</label>
         <input type="text" id="releaseYear" th:field="*{releaseYear}" value="*{releaseYear}" />
