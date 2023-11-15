@@ -14,5 +14,13 @@ Made using:
 - Thymeleaf
 - Apache Tomcat server
 - H2 database
+- REST
 
 Aleksi Hyppönen 2023
+
+TODO:
+- REST main endpoint and fetching only specified objects, such as songs of a single album
+- Get rid of the LIKE query when searching by name
+- Combine add and edit
+- More tests
+- Add CSS
