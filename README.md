@@ -24,3 +24,4 @@ TODO:
 - Combine add and edit
 - More tests
 - Add CSS
+- Add music genres to songs (many to many relation)
