@@ -10,13 +10,14 @@ Deployed to Render as of november 2023: https://jehawb-musicdb-v01.onrender.com
 
 Made using:
 - Java Spring Boot
-- Maven
 - Thymeleaf
-- Apache Tomcat server
-- H2 database
 - REST
+- H2 database
+- Maven
+- Apache Tomcat server
 
 Aleksi Hyppönen 2023
+
 
 TODO:
 - REST main endpoint and fetching only specified objects, such as songs of a single album
